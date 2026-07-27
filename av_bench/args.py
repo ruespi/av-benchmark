@@ -18,6 +18,7 @@ def get_eval_parser() -> ArgumentParser:
     parser.add_argument('--gt_cache', type=Path)
     parser.add_argument('--pred_audio', type=Path)
     parser.add_argument('--pred_cache', type=Path)
+    parser.add_argument('--output_metrics_dir', type=Path)
 
     parser.add_argument('--recompute_gt_cache', action='store_true')
     parser.add_argument('--recompute_pred_cache', action='store_true')

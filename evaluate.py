@@ -35,6 +35,7 @@ def main(args):
     gt_cache: Path = args.gt_cache
     pred_audio: Path = args.pred_audio
     pred_cache: Path = args.pred_cache
+    output_metrics_dir: Path = args.output_metrics_dir
     audio_length: float = args.audio_length
     num_workers: int = args.num_workers
     gt_batch_size: int = args.gt_batch_size
@@ -84,7 +85,7 @@ def main(args):
             batch_size=gt_batch_size,
             num_workers=num_workers,
             skip_video_related=True,
-            skip_clap=True,
+            skip_clap=skip_clap,
         )
 
     # extract for pred if needed
@@ -119,7 +120,7 @@ def main(args):
         log.info(f'{k:<10}: {v:.10f}')
 
     # write output metrics to file
-    output_metrics_file = pred_cache / 'output_metrics.json'
+    output_metrics_file = output_metrics_dir / 'output_metrics.json'
     with open(output_metrics_file, 'w') as f:
         json.dump(output_metrics, f, indent=4)
     log.info(f'Output metrics written to {output_metrics_file}')

@@ -37,7 +37,7 @@ def extract(args):
     output_cache_path = args.output_cache_path
 
     output_cache_path.mkdir(parents=True, exist_ok=True)
-    df = pd.read_csv(text_csv).to_dict(orient='records')
+    df = pd.read_csv(text_csv, sep='\t').to_dict(orient='records')
 
     laion_clap_model = laion_clap.CLAP_Module(enable_fusion=False,
                                               amodel='HTSAT-base').cuda().eval()

@@ -70,7 +70,7 @@ def unroll_paired_dict_with_key(gt_d: dict,
     paired_feat_list = [[] for _ in range(num_samples)]
     for sample_name, features in paired_features.items():
         if sample_name not in gt_features:
-            print(f'Sample {sample_name} not found in ground truth.')
+            print(f'Sample {sample_name} not found in ground truth in dict with key.')
             continue
         gt_feat_list.append(gt_features[sample_name])
         for i in range(num_samples):
@@ -92,7 +92,7 @@ def unroll_paired_dict(gt_dict: dict,
     pred_out_list = []
     for key, sample_name in pred_keys_to_sample.items():
         if sample_name in unpaired_samples:
-            print(f'Sample {sample_name} not found in ground truth.')
+            print(f'Sample {sample_name} not found in ground truth in dict.')
             continue
         gt_out_list.append(gt_dict[sample_name])
         pred_out_list.append(pred_dict[key])
